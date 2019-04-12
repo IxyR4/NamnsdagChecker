@@ -98,7 +98,7 @@ public class Main {
             System.out.println("---------------------------------------------         |");
             System.out.println("|[namn] [dag] [list] [exit] [help] [unicorn]|         |");
             System.out.println("---------------------------------------------         |");
-            System.out.println("Ha så kul! :D                                         |");
+            System.out.println("Ha så kul! :D    du är en snopp                       |");
             System.out.println("¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯");
             i = 0;
         }
