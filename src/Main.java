@@ -1,10 +1,7 @@
 //Imports a lot of funny stufflings and stuff and more stuff. (The hashmap is not the type of 420/hash you are thinking about)
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URISyntaxException;
-import java.net.URL;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.HashMap;
@@ -26,6 +23,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException, URISyntaxException {
         boolean on = true;
+        boolean isPrinted = false;
         while(on) {
 
             printFirstMessage();
@@ -52,6 +50,11 @@ public class Main {
                 exit();
             } else if (decision.equals("list")) {
                 list();
+
+            } else if(decision.equals("help")) {
+                printHelp();
+            } else if (decision.equals("unicorn")) {
+                printUnicorn();
             } else if (decision.equals("dag")) {
                 //If name is not true, then there is only date left to choose.
                 System.out.println("Skriv in en månad. T.ex Juli");
@@ -74,7 +77,7 @@ public class Main {
                 printDecisionFailcode();
             }
 
-            comfyDelay();
+            printDots();
         }
     }
 
@@ -85,12 +88,32 @@ public class Main {
     //Functions and such are starting here
 
     //UI FUNCTIONS
-    private static void pr
+    private static void printFirstMessage() {
+        int i = 1;
+        if (i == 1) {
+            System.out.println(" ");
+            System.out.println("_______________________________________________________");
+            System.out.println("Välkommen till mitt namnsdag-program! Skrivet i Java! |");
+            System.out.println("Dessa funktioner finns att välja mellan:              |");
+            System.out.println("---------------------------------------------         |");
+            System.out.println("|[namn] [dag] [list] [exit] [help] [unicorn]|         |");
+            System.out.println("---------------------------------------------         |");
+            System.out.println("Ha så kul! :D                                         |");
+            System.out.println("¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯");
+            i = 0;
+        }
+        else {
+            System.out.println("SYSTEM ERROR IN FUNCTION printFirstMessage, EXITING PROGRAM");
+            exit();
+        }
+    }
+
     private static void printInvalidNumber(){
         System.out.println("------------------------------------------");
         System.out.println("ERROR: Detta nummret finns inte i månaden.");
         System.out.println("------------------------------------------");
     }
+
     private static void printDecisionFailcode() {
         System.out.println("Du valde varken dag eller namn. Startar om processen.");
     }
@@ -108,10 +131,49 @@ public class Main {
         System.out.println("--------------------------------");
     }
 
+    private static void printAnimalChoices() {
+        System.out.println("You can choose between these animals");
+        System.out.println("[unicorn]");
+    }
+    private static void printUnicorn() {
+        System.out.println(" ");
+        System.out.println(" ");
+        System.out.println("                           ___________ _");
+        System.out.println(" \\/                    __/   .::::.-'-(/-/)");
+        System.out.println("                    _/:  .::::.-' .-'\\/\\_`*******          __ (_))");
+        System.out.println("       \\/          /:  .::::./   -._-.  d\\|               (_))_(__))");
+        System.out.println("                    /: (\"\"\"\"/    '.  (__/||           (_))__(_))--(__))");
+        System.out.println("                  \\::).-'  -._  \\/ \\\\/\\|");
+        System.out.println("              __ _ .-'`)/  '-'. . '. |  (i_O");
+        System.out.println("          .-'      \\       -'      '\\|");
+        System.out.println("     _ _./      .-'|       '.  (    \\\\                         % % %");
+        System.out.println("  .-'   :      '_  \\         '-'\\  /|/      @ @ @             % % % %");
+        System.out.println(" /      )\\_      '- )_________.-|_/^\\      @ @ @@@           % %\\/% %");
+        System.out.println(" (   .-'   )-._-:  /        \\(/\\'-._ `.     @|@@@@@            ..|........");
+        System.out.println("  (   )  _//_/|:  /          `\\()   `\\_\\     |/_@@             )'-._.-._.-");
+        System.out.println("   ( (   \\()^_/)_/             )/      \\\\    /                /   /");
+        System.out.println("    )  _.-\\\\.\\(_)__._.-'-.-'-.//_.-'-.-.)\\-'/._              /");
+        System.out.println(".-.-.-'   _o\\ \\\\\\     '::'   (o_ '-.-' |__\\'-.-;~ ~ ~ ~ ~ ~~/   /\\");
+        System.out.println("          \\ /  \\\\\\__          )_\\    .:::::::.-'\\          '- - -|");
+        System.out.println("     :::''':::::^)__\\:::::::::::::::::'''''''-.  \\                '- - - ");
+        System.out.println("    :::::::  '''''''''''   ''''''''''''':::. -'\\  \\");
+        System.out.println("_____':::::_____________________________________\\__\\______________________\n");
+        System.out.println("");
+    }
+
     private static void printNameFailcode() {
-        System.out.println("---------------------------------");
-        System.out.println("|!|FELKOD: Namn hittades inte |!|");
-        System.out.println("---------------------------------");
+        System.out.println("------------------------------------------------");
+        System.out.println("Tyvvär men namnet du skrev in har ingen namnsdag");
+        System.out.println("------------------------------------------------");
+    }
+
+    private static void printHelp() {
+        System.out.println("_________________________________________________________________________________");
+        System.out.println("You are a amazing person and i hope that your day is great!");
+        System.out.println("And don't listen to the negative people, they don't deserve to make you feel bad!");
+        System.out.println("Now go listen to some music and drink some water. (or watch memes ;))");
+        System.out.println("_________________________________________________________________________________");
+        comfyDelay();
     }
     
     private static void printResult(String datum, String namn){
@@ -319,4 +381,11 @@ public class Main {
 
     }
     
-//TODO: Gör funktonen list.
+//TODO: printFirstMessage metoden
+
+//Code written by Sebastian Besic. @HiQ-Karlskrona 2019-04-08 to 2019-04-12
+//Project given to me by Klas Nyström. Thanks HiQ for the amazing adventure for this "PRAO". It was fun and very educating.
+//For contact, find IxyR4 on gitHub, or try to track me down ;)
+
+
+
