@@ -32,49 +32,57 @@ public class Main {
             printDecisionUI();
             String decision = getInputString().toLowerCase();
 
-            if (decision.equals("namn")) {
+            switch (decision) {
+                case "namn": {
 
-                printNameUI();
-                String namn = getInputString().toLowerCase();
+                    printNameUI();
+                    String namn = getInputString().toLowerCase();
 
-                String datum = nameToDate(namn);
-                //If the "namn" (name) could not be found in "namnsdagar.txt", it will throw a failure code.
-                if (datum == null) {
-                    printNameFailcode();
-                } else {
-                    printResult(datum, namn);
+                    String datum = nameToDate(namn);
+                    //If the "namn" (name) could not be found in "namnsdagar.txt", it will throw a failure code.
+                    if (datum == null) {
+                        printNameFailcode();
+                    } else {
+                        printResult(datum, namn);
+                    }
+
+                    break;
                 }
+                case "exit":
+                    exit();
+                    break;
+                case "list":
+                    list();
 
-            }   //This is for exiting. Because no-one like stopping the code up by the right corner manually ;)
-            else if (decision.equals("exit")) {
-                exit();
-            } else if (decision.equals("list")) {
-                list();
+                    break;
+                case "help":
+                    printHelp();
+                    break;
+                case "unicorn":
+                    printUnicorn();
+                    break;
+                case "dag": {
+                    //If name is not true, then there is only date left to choose.
+                    System.out.println("Skriv in en månad. T.ex Juli");
 
-            } else if(decision.equals("help")) {
-                printHelp();
-            } else if (decision.equals("unicorn")) {
-                printUnicorn();
-            } else if (decision.equals("dag")) {
-                //If name is not true, then there is only date left to choose.
-                System.out.println("Skriv in en månad. T.ex Juli");
+                    String månadNamn = getInputString().toLowerCase();
+                    int månadNr = calculateMonth(månadNamn);
+                    System.out.println("Skriv in vilken dag i nummer");
+                    int datum = getInputInt();
 
-                String månadNamn = getInputString().toLowerCase();
-                int månadNr = calculateMonth(månadNamn);
-                System.out.println("Skriv in vilken dag i nummer");
-                int datum = getInputInt();
+                    String checkDate = datum + "/" + månadNr + "/" + 2019;
 
-                String checkDate = datum + "/" + månadNr + "/" + 2019;
-
-                if (!DateChecker.valDOB(checkDate)) {
-                    printInvalidNumber();
-                } else {
-                    System.out.println("Denna person har namnsdag den " + datum + " i " + månadNamn + ":");
-                    System.out.println(myNamesdayMap.get(datum + " " + månadNr));
+                    if (!DateChecker.valDOB(checkDate)) {
+                        printInvalidNumber();
+                    } else {
+                        System.out.println("Denna person har namnsdag den " + datum + " i " + månadNamn + ":");
+                        System.out.println(myNamesdayMap.get(datum + " " + månadNr));
+                    }
+                    break;
                 }
-            } //Ends decision "day"
-            else {
-                printDecisionFailcode();
+                default:
+                    printDecisionFailcode();
+                    break;
             }
 
             printDots();
@@ -98,7 +106,7 @@ public class Main {
             System.out.println("---------------------------------------------         |");
             System.out.println("|[namn] [dag] [list] [exit] [help] [unicorn]|         |");
             System.out.println("---------------------------------------------         |");
-            System.out.println("Ha så kul! :D    du är en snopp                       |");
+            System.out.println("Ha så kul! :D                                         |");
             System.out.println("¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯");
             i = 0;
         }
