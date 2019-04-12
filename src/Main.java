@@ -21,6 +21,8 @@ public class Main {
     public static final String NAMNSDAGAR_TXT = "namnsdagar.txt";
     public static final Scanner SCANNER = new Scanner(System.in);
 
+    private static final int ERROR = -1;
+
     public static void main(String[] args) throws IOException, URISyntaxException {
         boolean on = true;
         boolean isPrinted = false;
@@ -71,8 +73,10 @@ public class Main {
                     int datum = getInputInt();
 
                     String checkDate = datum + "/" + månadNr + "/" + 2019;
-
-                    if (!DateChecker.valDOB(checkDate)) {
+                    if(datum == ERROR) {
+                        System.out.println("Du måste skriva ett nummer.");
+                    }
+                    else if (!DateChecker.valDOB(checkDate)) {
                         printInvalidNumber();
                     } else {
                         System.out.println("Denna person har namnsdag den " + datum + " i " + månadNamn + ":");
@@ -139,10 +143,6 @@ public class Main {
         System.out.println("--------------------------------");
     }
 
-    private static void printAnimalChoices() {
-        System.out.println("You can choose between these animals");
-        System.out.println("[unicorn]");
-    }
     private static void printUnicorn() {
         System.out.println(" ");
         System.out.println(" ");
@@ -318,8 +318,13 @@ public class Main {
     }
 
     public static int getInputInt() {
-        String input = SCANNER.next();
-        return Integer.parseInt(input);
+        try {
+            String input = SCANNER.next();
+            return Integer.parseInt(input);
+        }
+        catch (NumberFormatException error) {
+            return ERROR;
+        }
     }
 
     private static int calculateMonth(String month) {
