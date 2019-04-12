@@ -393,12 +393,7 @@ public class Main {
         }
 
     }
-    
-//TODO: printFirstMessage metoden
 
 //Code written by Sebastian Besic. @HiQ-Karlskrona 2019-04-08 to 2019-04-12
 //Project given to me by Klas Nyström. Thanks HiQ for the amazing adventure for this "PRAO". It was fun and very educating.
 //For contact, find IxyR4 on gitHub, or try to track me down ;)
-
-
-
